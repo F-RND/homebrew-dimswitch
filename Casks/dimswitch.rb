@@ -18,6 +18,17 @@ cask "dimswitch" do
   url "https://frn-dist.sfo3.digitaloceanspaces.com/dimmer/#{version}/Dimmer-#{version}.dmg",
       verified: "frn-dist.sfo3.digitaloceanspaces.com/dimmer/"
   name "Dimswitch"
+
+  # `brew livecheck` auto-detects new releases by reading the same
+  # version.json the in-app updater + landing site consume. Without this,
+  # `brew audit --new` errors with "Version 'x.y.z' differs from '' retrieved
+  # by livecheck."
+  livecheck do
+    url "https://frn-dist.sfo3.digitaloceanspaces.com/dimmer/latest/version.json"
+    strategy :json do |json|
+      json["version"]
+    end
+  end
   desc "Attention-driven brightness control for external displays via DDC/CI"
   # Source repo (johnathan-greenaway/vibrance) is private, so we point at
   # the public landing site instead — github.com/.../vibrance would 404 for
