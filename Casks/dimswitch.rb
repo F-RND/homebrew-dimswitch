@@ -11,7 +11,12 @@ cask "dimswitch" do
   version "1.1.0"
   sha256 "ec09bbca90c73d7731500f3303db6a0d00cb1592c67c756a6825b238b4c00aa4"
 
-  url "https://frn-dist.sfo3.digitaloceanspaces.com/dimmer/1.1.0/Dimmer-1.1.0.dmg"
+  # `#{version}` interpolation keeps the URL self-updating per release —
+  # required by `brew audit` ("Use sha256 :no_check when URL is unversioned"
+  # otherwise). `verified:` declares the prefix we trust on the CDN, which
+  # `brew audit` requires when the download domain differs from `homepage`.
+  url "https://frn-dist.sfo3.digitaloceanspaces.com/dimmer/#{version}/Dimmer-#{version}.dmg",
+      verified: "frn-dist.sfo3.digitaloceanspaces.com/dimmer/"
   name "Dimswitch"
   desc "Attention-driven brightness control for external displays via DDC/CI"
   # Source repo (johnathan-greenaway/vibrance) is private, so we point at

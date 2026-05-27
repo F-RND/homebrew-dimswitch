@@ -31,7 +31,9 @@ class Dimswitch < Formula
 
   on_linux do
     on_intel do
-      url "https://frn-dist.sfo3.digitaloceanspaces.com/dimmer/1.1.0/Dimmer-1.1.0-linux-x86_64.AppImage"
+      # `#{version}` interpolation matches the cask. Formula audit doesn't
+      # require `verified:` the way cask audit does.
+      url "https://frn-dist.sfo3.digitaloceanspaces.com/dimmer/#{version}/Dimmer-#{version}-linux-x86_64.AppImage"
       sha256 "ed410dc110d35c0dfef38cd0da07576d5e84a5b74d5b9d5075ad83e33ad4b883"
     end
     on_arm do
