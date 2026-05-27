@@ -8,13 +8,13 @@
 # binary and the persisted UserDefaults domain.
 
 cask "dimswitch" do
-  version "1.0.24"
-  sha256 "e7a7bc7f7664f66c0ceb5197c26fb12d6abd04dee293cccf088f329a66930d33"
+  version "1.1.0"
+  sha256 "ec09bbca90c73d7731500f3303db6a0d00cb1592c67c756a6825b238b4c00aa4"
 
-  url "https://frn-dist.sfo3.digitaloceanspaces.com/dimmer/1.0.24/Dimmer-1.0.24.dmg"
+  url "https://frn-dist.sfo3.digitaloceanspaces.com/dimmer/1.1.0/Dimmer-1.1.0.dmg"
   name "Dimswitch"
   desc "Attention-driven brightness control for external displays via DDC/CI"
-  homepage "https://github.com/johnathan-greenaway/vibrance"
+  homepage "https://github.com/OWNER-NOT-SET/vibrance"
 
   # Minimum macOS — keep in sync with LSMinimumSystemVersion in Info.plist
   # and the deployment target in Package.swift.
