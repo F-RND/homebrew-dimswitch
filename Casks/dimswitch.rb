@@ -14,7 +14,10 @@ cask "dimswitch" do
   url "https://frn-dist.sfo3.digitaloceanspaces.com/dimmer/1.1.0/Dimmer-1.1.0.dmg"
   name "Dimswitch"
   desc "Attention-driven brightness control for external displays via DDC/CI"
-  homepage "https://github.com/OWNER-NOT-SET/vibrance"
+  # Source repo (johnathan-greenaway/vibrance) is private, so we point at
+  # the public landing site instead — github.com/.../vibrance would 404 for
+  # anyone running `brew info`.
+  homepage "https://dimswitch.frnds.store"
 
   # Minimum macOS — keep in sync with LSMinimumSystemVersion in Info.plist
   # and the deployment target in Package.swift.

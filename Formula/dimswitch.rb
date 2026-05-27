@@ -13,7 +13,8 @@
 
 class Dimswitch < Formula
   desc "Attention-driven brightness control for external displays via DDC/CI"
-  homepage "https://github.com/johnathan-greenaway/vibrance"
+  # Source repo is private; point at the public landing site instead.
+  homepage "https://dimswitch.frnds.store"
   version "1.1.0"
   license "Proprietary"
 
@@ -35,8 +36,8 @@ class Dimswitch < Formula
     end
     on_arm do
       odie <<~EOS
-        No aarch64 Linux build is published yet. Track:
-          https://github.com/johnathan-greenaway/vibrance/issues
+        No aarch64 Linux build is published yet.
+        Reach out via https://dimswitch.frnds.store if you'd like one.
       EOS
     end
   end
