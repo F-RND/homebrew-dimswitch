@@ -15,7 +15,7 @@ class Dimswitch < Formula
   desc "Attention-driven brightness control for external displays via DDC/CI"
   # Source repo is private; point at the public landing site instead.
   homepage "https://dimswitch.frnds.store"
-  version "1.1.22"
+  version "1.1.23"
   license "Proprietary"
 
   on_macos do
@@ -34,7 +34,7 @@ class Dimswitch < Formula
       # `#{version}` interpolation matches the cask. Formula audit doesn't
       # require `verified:` the way cask audit does.
       url "https://frn-dist.sfo3.digitaloceanspaces.com/dimmer/#{version}/Dimmer-#{version}-linux-x86_64.AppImage"
-      sha256 "cd1566ae3591648f859c14926ef0ffb77f3a16785a8aff3d29679d7cf785aee7"
+      sha256 "f5cca1d14961fe0e4c92149d3c762b10cc41a80225160856dd787a51f70597fb"
     end
     on_arm do
       odie <<~EOS
