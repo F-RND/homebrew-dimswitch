@@ -14,7 +14,7 @@
 
 cask "dimswitch" do
   version "1.1.43"
-  sha256 "70fef74df00ab2eb47c6ec6c1f0f3cf311e506cafa8b58943fc5e063fcddc937"
+  sha256 "eb5bc0ccea6efae8eccc1ef550d83f249388cc8160b447ceaa17f065dba582a3"
 
   # `#{version}` interpolation keeps the URL self-updating per release —
   # required by `brew audit` ("Use sha256 :no_check when URL is unversioned"
