@@ -13,8 +13,8 @@
 # reorder without re-running `brew style --cask dist/dimswitch.rb`.
 
 cask "dimswitch" do
-  version "1.1.64"
-  sha256 "60efad10e549b150db60557e3965e937fc8a2feb668eb134830ea296b8022519"
+  version "1.1.65"
+  sha256 "c8346a8432fa7109c79a65e05e5f32b7db3a5a144f43cde12250e2590f3b9b68"
 
   # `#{version}` interpolation keeps the URL self-updating per release —
   # required by `brew audit` ("Use sha256 :no_check when URL is unversioned"
