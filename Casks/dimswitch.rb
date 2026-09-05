@@ -4,23 +4,29 @@
 # release. The download URL uses `#{version}` interpolation so it tracks
 # the cask version automatically.
 #
-# Note: cask is named "dimswitch" (marketing name) but the .app bundle and
-# bundle ID still use "Dimmer" — those are baked into the signed/notarized
-# binary and the persisted UserDefaults domain.
+# Note: the cask, the .app bundle and the DMG are all "Dimswitch" now. The
+# BUNDLE ID is deliberately still com.dimmerapp.Dimmer: it is not user-visible,
+# and changing it would reset every existing install (UserDefaults domain, TCC
+# grants, the SMAppService login item, the keychain license item). That is why
+# the zap paths below are still com.dimmerapp.Dimmer — they must match the
+# bundle id, not the app name.
+#
+# The CDN prefix is likewise still `dimmer/`; it is compiled into shipped
+# binaries as the version.json location. Only filenames follow the rename.
 #
 # Stanza order matters for `brew style` — it enforces a specific layout
 # (name → desc → homepage → livecheck → depends_on → app → zap). Don't
 # reorder without re-running `brew style --cask dist/dimswitch.rb`.
 
 cask "dimswitch" do
-  version "1.1.71"
-  sha256 "06a7630298772eaa298badd745adb57566a20e0fe4e0d5774ad52d0daee6fee6"
+  version "1.1.72"
+  sha256 "b33495d14ba367bbc491c2145fb2d7e7f266be89f9388a00965c2d8d634ca483"
 
   # `#{version}` interpolation keeps the URL self-updating per release —
   # required by `brew audit` ("Use sha256 :no_check when URL is unversioned"
   # otherwise). `verified:` declares the prefix we trust on the CDN, which
   # `brew audit` requires when the download domain differs from `homepage`.
-  url "https://frn-dist.sfo3.digitaloceanspaces.com/dimmer/#{version}/Dimmer-#{version}.dmg",
+  url "https://frn-dist.sfo3.digitaloceanspaces.com/dimmer/#{version}/Dimswitch-#{version}.dmg",
       verified: "frn-dist.sfo3.digitaloceanspaces.com/dimmer/"
   name "Dimswitch"
   desc "Attention-driven brightness control for external displays via DDC/CI"
@@ -46,14 +52,17 @@ cask "dimswitch" do
   # `brew style` enforces the symbol form for the minimum-version case.
   depends_on macos: :sonoma
 
-  app "Dimmer.app"
+  app "Dimswitch.app"
 
   # zap removes everything the app writes outside its bundle. Per Homebrew
   # Cask convention, uninstall just removes the .app; zap is invoked via
   # `brew uninstall --zap dimswitch` for a clean wipe. Array must be
-  # alphabetically sorted (Cask/ArrayAlphabetization).
+  # alphabetically sorted (Cask/ArrayAlphabetization). Both the pre- and
+  # post-rename Application Support paths are listed so a zap on a machine
+  # that ran either name leaves nothing behind.
   zap trash: [
     "~/Library/Application Support/Dimmer",
+    "~/Library/Application Support/Dimswitch",
     "~/Library/Caches/com.dimmerapp.Dimmer",
     "~/Library/HTTPStorages/com.dimmerapp.Dimmer",
     "~/Library/Preferences/com.dimmerapp.Dimmer.plist",
